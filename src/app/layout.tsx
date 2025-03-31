@@ -1,3 +1,6 @@
+import Footer from "@/components/footer/footer";
+import NavBar from "@/components/nav-menu/nav-menu";
+import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -25,9 +28,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`h-screen m-0 p-0 flex justify-center ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="h-full w-4/5 m-0 p-0 flex flex-col">
+          <header className="mt-3 mb-5 p-1 flex justify-center rounded-lg border border-gray-200 shadow-md">
+            <NavBar />
+          </header>
+          <main className="flex flex-grow p-5 rounded-lg border border-gray-200 shadow-lg overflow-hidden">
+            {children}
+          </main>
+          <footer className="mt-5 mb-7">
+            <Footer />
+          </footer>
+          <Toaster />
+        </div>
       </body>
     </html>
   );
